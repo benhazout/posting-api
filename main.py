@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from post import models
 from post.database import engine
+from post.routers import user
 
 
 tags_metadata = [
@@ -18,3 +19,5 @@ app = FastAPI(openapi_tags=tags_metadata)
 
 # when we find any data in the models create tables
 models.Base.metadata.create_all(bind=engine)
+
+app.include_router(user.router)

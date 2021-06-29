@@ -23,7 +23,7 @@ class User(BaseModel):
 # show schemas
 class ShowUserBase(BaseModel):
     name: str
-    email: str
+    username: str
 
     class Config:
         orm_mode = True
