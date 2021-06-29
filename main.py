@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from post import models
 from post.database import engine
-from post.routers import user
+from post.routers import user, authentication
 
 
 tags_metadata = [
@@ -21,3 +21,4 @@ app = FastAPI(openapi_tags=tags_metadata)
 models.Base.metadata.create_all(bind=engine)
 
 app.include_router(user.router)
+app.include_router(authentication.router)
