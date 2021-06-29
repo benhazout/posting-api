@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-import models
-from database import engine
+from post import models
+from post.database import engine
 
 
 tags_metadata = [
