@@ -1,2 +1,2 @@
-# blog-api
+# posting-api
 Post REST-API
