@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError, validator
 from typing import List, Optional
 
 
@@ -11,6 +11,17 @@ class PostBase(BaseModel):
 class Post(PostBase):
     class Config:
         orm_mode = True
+
+
+class RequiredPosts(BaseModel):
+    start: int
+    limit: int
+
+    @validator('limit')
+    def must_be_larger_than_start(cls, v, values, **kwargs):
+        if 'start' in values and v <= values['start']:
+            raise ValueError('limit must be larger than start')
+        return v
 
 
 # user schema
