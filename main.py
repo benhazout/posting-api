@@ -7,11 +7,12 @@ from post.routers import user, authentication, posts
 tags_metadata = [
     {
         "name": "User",
-        "description": "Operations with users. The **login** logic is also here.",
+        "description": "Operations with users: create users ([POST/user] and get user data by id ([GET/user/{id}]))",
     },
     {
-        "name": "Post",
-        "description": "Manage posts. ",
+        "name": "Posts",
+        "description": "Operations with users: get required posts - using offset (where to start from), limit (the "
+                       "amount of posts) and newest (true or false - bring posts from newest created or not)",
     },
 ]
 
@@ -22,6 +23,5 @@ models.Base.metadata.create_all(bind=engine)
 
 app.include_router(user.router)
 app.include_router(authentication.router)
-app.include_router(posts.router_post)
 app.include_router(posts.router_posts)
 app.include_router(posts.router_postsnumber)

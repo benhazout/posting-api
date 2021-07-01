@@ -13,11 +13,7 @@ router_posts = APIRouter(
 
 router_postsnumber = APIRouter(
     prefix='/postsnumber',
-    tags=['Post']
-)
-router_post = APIRouter(
-    prefix='/post',
-    tags=['Post']
+    tags=['Posts']
 )
 
 
