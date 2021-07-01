@@ -35,3 +35,8 @@ def required_posts(
         db: Session = Depends(get_db)
 ):
     return posts.required(offset, limit, newest, db)
+
+
+@router_postsnumber.get('/')
+def posts_number(db: Session = Depends(get_db)):
+    return {'posts_number': posts.posts_number(db)}

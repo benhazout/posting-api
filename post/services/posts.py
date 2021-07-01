@@ -17,3 +17,7 @@ def required(offset: int, limit: int, newest: bool, db: Session):
     posts = db.query(models.Post).offset(offset).limit(limit).all()
     return posts
 
+
+def posts_number(db: Session):
+    number_of_posts = db.query(models.Post).count()
+    return number_of_posts
