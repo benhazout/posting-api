@@ -8,12 +8,12 @@ class Post(Base):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String)
     body = Column(String)
-    user_id = Column(Integer, ForeignKey('users.id'), default=1)
+    user_id = Column(Integer, ForeignKey('users.id'))
     creator = relationship("User", back_populates="posts")
 
 
-class Stat(Base):
-    __tablename__ = 'stats'
+class Statistics(Base):
+    __tablename__ = 'statistics'
     id = Column(String, primary_key=True)
     average_run_time = Column(TIME())
     request_count = Column(Integer)

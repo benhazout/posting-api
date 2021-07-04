@@ -2,8 +2,8 @@ from .. import models, schemas
 from sqlalchemy.orm import Session
 
 
-def create(request: schemas.Post, db: Session):
-    new_post = models.Post(title=request.title, body=request.body)
+def create(request: schemas.PostWrite, db: Session, current_user):
+    new_post = models.Post(title=request.title, body=request.body, user_id=current_user.user_id)
     db.add(new_post)
     db.commit()
     db.refresh(new_post)

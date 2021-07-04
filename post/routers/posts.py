@@ -17,10 +17,10 @@ router_postsnumber = APIRouter(
 )
 
 
-@router_posts.post('/', status_code=status.HTTP_201_CREATED)
-def create(request: schemas.Post, db: Session = Depends(get_db),
+@router_posts.post('/', status_code=status.HTTP_201_CREATED, response_model=schemas.ShowPost)
+def create_post(request: schemas.Post, db: Session = Depends(get_db),
            current_user: schemas.User = Depends(oauth2.get_current_user)):
-    return posts.create(request, db)
+    return posts.create(request, db, current_user)
 
 
 @router_posts.get('/', response_model=List[schemas.ShowPost])

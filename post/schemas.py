@@ -13,6 +13,10 @@ class Post(PostBase):
         orm_mode = True
 
 
+class PostWrite(Post):
+    user_id: int
+
+
 class RequiredPosts(BaseModel):
     start: int
     limit: int
@@ -53,6 +57,13 @@ class ShowPost(BaseModel):
         orm_mode = True
 
 
+class TopCreator(ShowUserBase):
+    posts: int
+
+
+class ShowTopCreators(BaseModel):
+    creators: List[TopCreator] = []
+
 # login schema
 class Login(BaseModel):
     username: str
@@ -62,3 +73,4 @@ class Login(BaseModel):
 # token schemas
 class TokenData(BaseModel):
     username: Optional[str] = None
+    user_id: Optional[int] = None

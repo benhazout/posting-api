@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from post import models
 from post.database import engine
-from post.routers import user, authentication, posts
+from post.routers import user, authentication, posts, statistics
 
 
 tags_metadata = [
@@ -25,3 +25,4 @@ app.include_router(user.router)
 app.include_router(authentication.router)
 app.include_router(posts.router_posts)
 app.include_router(posts.router_postsnumber)
+app.include_router(statistics.router)
